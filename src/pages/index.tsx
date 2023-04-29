@@ -1,7 +1,4 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ data }: any) {
   return (
@@ -20,7 +17,7 @@ export default function Home({ data }: any) {
 
 export async function getServerSideProps() {
   // Fetch data from openSB
-  const res = await fetch(`https://qobo.tv/api/v2/get_submissions`)
+  const res = await fetch(process.env.QOBOSITE + `/api/v2/get_submissions`)
   const data = await res.json()
 
   // Pass data to the page via props
